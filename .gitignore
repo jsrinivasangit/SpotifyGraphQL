@@ -1,0 +1,12 @@
+bin/
+obj/
+.vs/
+.vscode/
+*.user
+*.pubxml
+dist/
+build/
+
+node_modules/
+.env
+.env.local

@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="SpotifyGraphQL.Api/SpotifyGraphQL.Api.csproj" />
+  <Project Path="SpotifyGraphQL.Application/SpotifyGraphQL.Application.csproj" />
+  <Project Path="SpotifyGraphQL.Domain/SpotifyGraphQL.Domain.csproj" />
+  <Project Path="SpotifyGraphQL.Infrastructure/SpotifyGraphQL.Infrastructure.csproj" />
+  <Project Path="SpotifyGraphQL.Tests/SpotifyGraphQL.Tests.csproj" />
+</Solution>
