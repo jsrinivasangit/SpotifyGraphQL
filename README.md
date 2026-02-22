@@ -85,6 +85,8 @@ dotnet run --project SpotifyGraphQL.Api
 ```
 ## Example GraphQL Queries
 1. Get one track by ID
+
+```json
 query {
   trackById(trackId: "5SuOikwiRyPMVoIQDJUgSV") {
     trackId
@@ -98,15 +100,10 @@ query {
     tempo
   }
 }
-2. List available genres
-query {
-  genres
-}
-3. List artists
-query {
-  artists
-}
-4. High popularity tracks (popularity > 80)
+```json
+
+3. High popularity tracks (popularity > 80)
+```json
 query {
   tracks(where: { popularity: { gt: 80 } }, order: { popularity: DESC }) {
     totalCount
@@ -119,7 +116,12 @@ query {
     }
   }
 }
-5. Acoustic genre with high popularity
+```json
+
+
+4. Acoustic genre with high popularity
+
+```json
 query {
   tracks(
     where: {
@@ -138,7 +140,11 @@ query {
     }
   }
 }
-6. Top tracks by popularity (first 10)
+```json
+
+5. Top tracks by popularity (first 10)
+
+```json
 query {
   tracks(first: 10, order: { popularity: DESC }) {
     totalCount
@@ -151,7 +157,10 @@ query {
     }
   }
 }
-7. Highest energy tracks (first 10)
+```json
+
+6. Highest energy tracks (first 10)
+```json
 query {
   tracks(first: 10, order: { energy: DESC }) {
     nodes {
@@ -163,7 +172,10 @@ query {
     }
   }
 }
-8. High danceability, sorted by tempo
+```json
+
+7. High danceability, sorted by tempo
+```json
 query {
   tracks(
     where: { danceability: { gt: 0.75 } }
@@ -180,7 +192,9 @@ query {
     }
   }
 }
-9. Multiple filters + sorting
+```json
+8. Multiple filters + sorting
+```json
 query {
   tracks(
     where: {
@@ -203,27 +217,4 @@ query {
     }
   }
 }
-10. Genre stats + similar tracks
-query {
-  statsByGenre(genre: "acoustic", top: 5) {
-    genre
-    trackCount
-    avgTempo
-    avgEnergy
-    avgDanceability
-    topByPopularity {
-      trackId
-      trackName
-      artists
-      popularity
-    }
-  }
-
-  similarTracks(trackId: "5SuOikwiRyPMVoIQDJUgSV", top: 10, sameGenreOnly: true) {
-    trackId
-    trackName
-    artists
-    genre
-    score
-  }
-}
+```json
