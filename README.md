@@ -100,9 +100,9 @@ query {
     tempo
   }
 }
-```json
+```
 
-3. High popularity tracks (popularity > 80)
+2. High popularity tracks (popularity > 80)
 ```json
 query {
   tracks(where: { popularity: { gt: 80 } }, order: { popularity: DESC }) {
@@ -116,10 +116,10 @@ query {
     }
   }
 }
-```json
+```
 
 
-4. Acoustic genre with high popularity
+3. Acoustic genre with high popularity
 
 ```json
 query {
@@ -140,9 +140,9 @@ query {
     }
   }
 }
-```json
+```
 
-5. Top tracks by popularity (first 10)
+4. Top tracks by popularity (first 10)
 
 ```json
 query {
@@ -157,9 +157,9 @@ query {
     }
   }
 }
-```json
+```
 
-6. Highest energy tracks (first 10)
+5. Highest energy tracks (first 10)
 ```json
 query {
   tracks(first: 10, order: { energy: DESC }) {
@@ -172,9 +172,9 @@ query {
     }
   }
 }
-```json
+```
 
-7. High danceability, sorted by tempo
+6. High danceability, sorted by tempo
 ```json
 query {
   tracks(
@@ -192,8 +192,8 @@ query {
     }
   }
 }
-```json
-8. Multiple filters + sorting
+```
+7. Multiple filters + sorting
 ```json
 query {
   tracks(
@@ -217,4 +217,4 @@ query {
     }
   }
 }
-```json
+```
