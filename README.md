@@ -76,9 +76,14 @@ Source: https://www.kaggle.com/datasets/yashdev01/spotify-tracks-dataset
 ```bash
 dotnet restore
 dotnet run --project SpotifyGraphQL.Api
+```
+## Run Backend
 
-
-Example GraphQL Queries
+```bash
+dotnet restore
+dotnet run --project SpotifyGraphQL.Api
+```
+## Example GraphQL Queries
 1. Get one track by ID
 query {
   trackById(trackId: "5SuOikwiRyPMVoIQDJUgSV") {
