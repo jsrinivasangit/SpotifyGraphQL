@@ -76,3 +76,149 @@ Source: https://www.kaggle.com/datasets/yashdev01/spotify-tracks-dataset
 ```bash
 dotnet restore
 dotnet run --project SpotifyGraphQL.Api
+
+
+Example GraphQL Queries
+1. Get one track by ID
+query {
+  trackById(trackId: "5SuOikwiRyPMVoIQDJUgSV") {
+    trackId
+    trackName
+    artists
+    albumName
+    popularity
+    trackGenre
+    energy
+    danceability
+    tempo
+  }
+}
+2. List available genres
+query {
+  genres
+}
+3. List artists
+query {
+  artists
+}
+4. High popularity tracks (popularity > 80)
+query {
+  tracks(where: { popularity: { gt: 80 } }, order: { popularity: DESC }) {
+    totalCount
+    nodes {
+      trackId
+      trackName
+      artists
+      popularity
+      trackGenre
+    }
+  }
+}
+5. Acoustic genre with high popularity
+query {
+  tracks(
+    where: {
+      trackGenre: { eq: "acoustic" }
+      popularity: { gt: 70 }
+    }
+    order: { popularity: DESC }
+  ) {
+    totalCount
+    nodes {
+      trackId
+      trackName
+      popularity
+      trackGenre
+      acousticness
+    }
+  }
+}
+6. Top tracks by popularity (first 10)
+query {
+  tracks(first: 10, order: { popularity: DESC }) {
+    totalCount
+    nodes {
+      trackId
+      trackName
+      popularity
+      artists
+      trackGenre
+    }
+  }
+}
+7. Highest energy tracks (first 10)
+query {
+  tracks(first: 10, order: { energy: DESC }) {
+    nodes {
+      trackId
+      trackName
+      energy
+      popularity
+      trackGenre
+    }
+  }
+}
+8. High danceability, sorted by tempo
+query {
+  tracks(
+    where: { danceability: { gt: 0.75 } }
+    order: { tempo: ASC }
+    first: 20
+  ) {
+    nodes {
+      trackId
+      trackName
+      danceability
+      tempo
+      popularity
+      trackGenre
+    }
+  }
+}
+9. Multiple filters + sorting
+query {
+  tracks(
+    where: {
+      popularity: { gt: 60 }
+      energy: { gt: 0.5 }
+      danceability: { gt: 0.6 }
+    }
+    order: [{ popularity: DESC }, { tempo: ASC }]
+    first: 25
+  ) {
+    totalCount
+    nodes {
+      trackId
+      trackName
+      popularity
+      energy
+      danceability
+      tempo
+      trackGenre
+    }
+  }
+}
+10. Genre stats + similar tracks
+query {
+  statsByGenre(genre: "acoustic", top: 5) {
+    genre
+    trackCount
+    avgTempo
+    avgEnergy
+    avgDanceability
+    topByPopularity {
+      trackId
+      trackName
+      artists
+      popularity
+    }
+  }
+
+  similarTracks(trackId: "5SuOikwiRyPMVoIQDJUgSV", top: 10, sameGenreOnly: true) {
+    trackId
+    trackName
+    artists
+    genre
+    score
+  }
+}
